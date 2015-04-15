@@ -22,17 +22,35 @@ using namespace cv;
     CvVideoCamera* videoCamera;
     CascadeClassifier faceCascade;
     __weak IBOutlet UISegmentedControl *cameraPosition;
+    __weak IBOutlet UISegmentedControl *RGBorHSV;
     __weak IBOutlet UISlider *slider;
     __weak IBOutlet UILabel *label;
+    __weak IBOutlet UISlider *HMaxSlider;
+    __weak IBOutlet UILabel *HMaxLabel;
+    __weak IBOutlet UISlider *SMinSlider;
+    __weak IBOutlet UILabel *SMinLabel;
+    __weak IBOutlet UISlider *SMaxSlider;
+    __weak IBOutlet UILabel *SMaxLabel;
+    __weak IBOutlet UISlider *VMinSlider;
+    __weak IBOutlet UILabel *VMinLabel;
+    __weak IBOutlet UISlider *VMaxSlider;
+    __weak IBOutlet UILabel *VMaxLabel;
     
 }
 
 @property (nonatomic,retain) CvVideoCamera* videoCamera;
+
 - (IBAction)cameraPositionAction:(id)sender;
 
 - (IBAction)actionStart:(id)sender;
 - (IBAction)actionStop:(id)sender;
 - (IBAction)slider:(UISlider *)sender;
+- (IBAction)HMaxAction:(UISlider *)sender;
+- (IBAction)SMinAction:(UISlider *)sender;
+- (IBAction)SMaxAction:(UISlider *)sender;
+- (IBAction)VMinAction:(UISlider *)sender;
+- (IBAction)VMaxAction:(UISlider *)sender;
+
 
 @end
 
