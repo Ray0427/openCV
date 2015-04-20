@@ -107,7 +107,7 @@
                                 <rect key="frame" x="142" y="59" width="189" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
-                                    <action selector="slider:" destination="vXZ-lx-hvc" eventType="valueChanged" id="Huh-vD-wEu"/>
+                                    <action selector="HMinSlider:" destination="vXZ-lx-hvc" eventType="valueChanged" id="mFA-F0-u6X"/>
                                 </connections>
                             </slider>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="p9r-vp-2Pa">
@@ -146,6 +146,8 @@
                     <connections>
                         <outlet property="HMaxLabel" destination="yjL-8m-TbN" id="BSV-An-ukC"/>
                         <outlet property="HMaxSlider" destination="k6j-GR-IIq" id="Hhj-6W-gRm"/>
+                        <outlet property="HMinLabel" destination="Feg-0j-yYP" id="rre-v9-Zaq"/>
+                        <outlet property="HMinSlider" destination="uDF-Nh-Nsd" id="ZOS-NA-eOR"/>
                         <outlet property="RGBorHSV" destination="2Wz-4z-pfM" id="xWr-zT-2YW"/>
                         <outlet property="SMaxLabel" destination="sZ9-oR-ffA" id="rg4-nU-XOR"/>
                         <outlet property="SMaxSlider" destination="WNL-6X-ekR" id="AKf-d9-ktu"/>
@@ -158,8 +160,6 @@
                         <outlet property="button" destination="8Jl-p1-T0v" id="WvA-AX-oF5"/>
                         <outlet property="cameraPosition" destination="p9r-vp-2Pa" id="MsN-lm-3E4"/>
                         <outlet property="imageView" destination="9Ip-Nu-zLD" id="oxf-MG-YDp"/>
-                        <outlet property="label" destination="Feg-0j-yYP" id="x9D-iq-Sy2"/>
-                        <outlet property="slider" destination="uDF-Nh-Nsd" id="y1o-w4-ArZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

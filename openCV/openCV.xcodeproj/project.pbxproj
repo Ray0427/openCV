@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A2280D4439B47FA2746337F /* libPods-openCV.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1332E42A528208FEF0142E7F /* libPods-openCV.a */; };
 		8B41C0DA1AC2916F00501DE5 /* main.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8B41C0D91AC2916F00501DE5 /* main.mm */; };
 		8B41C0DD1AC2916F00501DE5 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8B41C0DC1AC2916F00501DE5 /* AppDelegate.mm */; };
 		8B41C0E01AC2916F00501DE5 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8B41C0DF1AC2916F00501DE5 /* ViewController.mm */; };
@@ -41,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0A51F25D457364455F4B3766 /* Pods-openCV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openCV.release.xcconfig"; path = "Pods/Target Support Files/Pods-openCV/Pods-openCV.release.xcconfig"; sourceTree = "<group>"; };
+		1332E42A528208FEF0142E7F /* libPods-openCV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-openCV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B41C0D41AC2916F00501DE5 /* openCV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = openCV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B41C0D81AC2916F00501DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B41C0D91AC2916F00501DE5 /* main.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = main.mm; sourceTree = "<group>"; };
@@ -69,6 +72,7 @@
 		8B41C1241AC436FE00501DE5 /* haarcascade_frontalface_alt2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_frontalface_alt2.xml; sourceTree = "<group>"; };
 		8B41C1261AC43A3C00501DE5 /* haarcascade_frontalface_alt.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_frontalface_alt.xml; sourceTree = "<group>"; };
 		8B41C1281AC43E9800501DE5 /* haarcascade_eye.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = haarcascade_eye.xml; sourceTree = "<group>"; };
+		AD33D6CD722880FDF6530AB3 /* Pods-openCV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-openCV.debug.xcconfig"; path = "Pods/Target Support Files/Pods-openCV/Pods-openCV.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +91,7 @@
 				8B41C1111AC29FE500501DE5 /* opencv2.framework in Frameworks */,
 				8B41C1001AC291FB00501DE5 /* UIKit.framework in Frameworks */,
 				8B41C1031AC2923700501DE5 /* Foundation.framework in Frameworks */,
+				8A2280D4439B47FA2746337F /* libPods-openCV.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +105,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		78B8698961F9A9D239CC0768 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD33D6CD722880FDF6530AB3 /* Pods-openCV.debug.xcconfig */,
+				0A51F25D457364455F4B3766 /* Pods-openCV.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		8B41C0CB1AC2916F00501DE5 = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +130,8 @@
 				8B41C0D61AC2916F00501DE5 /* openCV */,
 				8B41C0F01AC2916F00501DE5 /* openCVTests */,
 				8B41C0D51AC2916F00501DE5 /* Products */,
+				78B8698961F9A9D239CC0768 /* Pods */,
+				E4391C8AA7C8D2454EED5DB2 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -182,6 +198,14 @@
 			name = Framework;
 			sourceTree = "<group>";
 		};
+		E4391C8AA7C8D2454EED5DB2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1332E42A528208FEF0142E7F /* libPods-openCV.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -189,9 +213,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8B41C0F71AC2916F00501DE5 /* Build configuration list for PBXNativeTarget "openCV" */;
 			buildPhases = (
+				B856942FA2629BF3CBA0739D /* Check Pods Manifest.lock */,
 				8B41C0D01AC2916F00501DE5 /* Sources */,
 				8B41C0D11AC2916F00501DE5 /* Frameworks */,
 				8B41C0D21AC2916F00501DE5 /* Resources */,
+				1AADB46744176895ED4BD00E /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -280,6 +306,39 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1AADB46744176895ED4BD00E /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-openCV/Pods-openCV-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B856942FA2629BF3CBA0739D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8B41C0D01AC2916F00501DE5 /* Sources */ = {
@@ -408,6 +467,7 @@
 		};
 		8B41C0F81AC2916F00501DE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD33D6CD722880FDF6530AB3 /* Pods-openCV.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -427,6 +487,7 @@
 		};
 		8B41C0F91AC2916F00501DE5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0A51F25D457364455F4B3766 /* Pods-openCV.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
