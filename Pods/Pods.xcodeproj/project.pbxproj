@@ -1,0 +1,307 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A0D43C104DCA8ACA4449685B /* Pods-openCV-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2316C1E6C4180EFE44204BF6 /* Pods-openCV-dummy.m */; };
+		E284BCEFE7664B9279694C8D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08DA8EAA7AEA87048995D5A2 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		08DA8EAA7AEA87048995D5A2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS7.1.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		12F295C07BBA57440197B8E8 /* Pods-openCV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-openCV.debug.xcconfig"; sourceTree = "<group>"; };
+		181B3853B694036150D1A097 /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		2316C1E6C4180EFE44204BF6 /* Pods-openCV-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-openCV-dummy.m"; sourceTree = "<group>"; };
+		271F3DCFC1FCD90D7374C1C0 /* Pods-openCV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-openCV.release.xcconfig"; sourceTree = "<group>"; };
+		2E971BF560D7780F327524ED /* Pods-openCV-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-openCV-acknowledgements.plist"; sourceTree = "<group>"; };
+		31721DAA93BF2805FE18E1FF /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = opencv2.framework; sourceTree = "<group>"; };
+		A3D9CF6FE0F67695D1258230 /* Pods-openCV-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-openCV-resources.sh"; sourceTree = "<group>"; };
+		D204A06A1E1E9D5A67839B5C /* libPods-openCV.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-openCV.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD514CB07D036102D712670E /* Pods-openCV-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-openCV-acknowledgements.markdown"; sourceTree = "<group>"; };
+		DF7954D46AD0D274D3707576 /* Pods-openCV-environment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-openCV-environment.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		27CAB26DC66D8DA92D0900C4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E284BCEFE7664B9279694C8D /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F559F8F4EB3CC38DE62C3A6 = {
+			isa = PBXGroup;
+			children = (
+				181B3853B694036150D1A097 /* Podfile */,
+				CA0D0971AA9BF20CDBAF7CA2 /* Frameworks */,
+				25178F4E61CBC535CA7292BC /* Pods */,
+				BDA38A67AF93CFB13EB5D26E /* Products */,
+				770954C4729FFA50B82CE54D /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		25178F4E61CBC535CA7292BC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				ED69BD0F411915AA4CA66804 /* OpenCV */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		2598B40BDBA0EE4CE7D3C007 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				08DA8EAA7AEA87048995D5A2 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		3DEFE29A54D520AB980E9CBE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				31721DAA93BF2805FE18E1FF /* opencv2.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		770954C4729FFA50B82CE54D /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EE9A2BB4B1634CF63ECC9B61 /* Pods-openCV */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		BDA38A67AF93CFB13EB5D26E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D204A06A1E1E9D5A67839B5C /* libPods-openCV.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CA0D0971AA9BF20CDBAF7CA2 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2598B40BDBA0EE4CE7D3C007 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		ED69BD0F411915AA4CA66804 /* OpenCV */ = {
+			isa = PBXGroup;
+			children = (
+				3DEFE29A54D520AB980E9CBE /* Frameworks */,
+			);
+			path = OpenCV;
+			sourceTree = "<group>";
+		};
+		EE9A2BB4B1634CF63ECC9B61 /* Pods-openCV */ = {
+			isa = PBXGroup;
+			children = (
+				DD514CB07D036102D712670E /* Pods-openCV-acknowledgements.markdown */,
+				2E971BF560D7780F327524ED /* Pods-openCV-acknowledgements.plist */,
+				2316C1E6C4180EFE44204BF6 /* Pods-openCV-dummy.m */,
+				DF7954D46AD0D274D3707576 /* Pods-openCV-environment.h */,
+				A3D9CF6FE0F67695D1258230 /* Pods-openCV-resources.sh */,
+				12F295C07BBA57440197B8E8 /* Pods-openCV.debug.xcconfig */,
+				271F3DCFC1FCD90D7374C1C0 /* Pods-openCV.release.xcconfig */,
+			);
+			name = "Pods-openCV";
+			path = "Target Support Files/Pods-openCV";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		406277064E4CF870153DBF7C /* Pods-openCV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A02B5EAB6B1B18A1F45814B /* Build configuration list for PBXNativeTarget "Pods-openCV" */;
+			buildPhases = (
+				9B501D1C4A3111F800DBC529 /* Sources */,
+				27CAB26DC66D8DA92D0900C4 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-openCV";
+			productName = "Pods-openCV";
+			productReference = D204A06A1E1E9D5A67839B5C /* libPods-openCV.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		240229EE7BDFDD1F8D66C552 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+			};
+			buildConfigurationList = E0FE680A6EC048560D9678CE /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 0F559F8F4EB3CC38DE62C3A6;
+			productRefGroup = BDA38A67AF93CFB13EB5D26E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				406277064E4CF870153DBF7C /* Pods-openCV */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9B501D1C4A3111F800DBC529 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0D43C104DCA8ACA4449685B /* Pods-openCV-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		00E562A69A72D5A0E442CFEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12F295C07BBA57440197B8E8 /* Pods-openCV.debug.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		2E04104C51CE6564F83BD476 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 271F3DCFC1FCD90D7374C1C0 /* Pods-openCV.release.xcconfig */;
+			buildSettings = {
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		6486ED07B4E613F5473B4328 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				ONLY_ACTIVE_ARCH = YES;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		D4ABA1D9D066CB42D063BA22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = "RELEASE=1";
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A02B5EAB6B1B18A1F45814B /* Build configuration list for PBXNativeTarget "Pods-openCV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				00E562A69A72D5A0E442CFEB /* Debug */,
+				2E04104C51CE6564F83BD476 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E0FE680A6EC048560D9678CE /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6486ED07B4E613F5473B4328 /* Debug */,
+				D4ABA1D9D066CB42D063BA22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 240229EE7BDFDD1F8D66C552 /* Project object */;
+}
