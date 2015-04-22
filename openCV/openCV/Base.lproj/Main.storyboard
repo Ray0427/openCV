@@ -139,6 +139,17 @@
                                     <segment title="HSV"/>
                                 </segments>
                             </segmentedControl>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="dtX-Lp-OXO">
+                                <rect key="frame" x="615" y="23" width="111" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="auto"/>
+                                    <segment title="locked"/>
+                                </segments>
+                                <connections>
+                                    <action selector="changeFocusMode:" destination="vXZ-lx-hvc" eventType="valueChanged" id="1el-hi-zIJ"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -159,6 +170,7 @@
                         <outlet property="VMinSlider" destination="ZBj-i1-lfo" id="8jy-0Z-voO"/>
                         <outlet property="button" destination="8Jl-p1-T0v" id="WvA-AX-oF5"/>
                         <outlet property="cameraPosition" destination="p9r-vp-2Pa" id="MsN-lm-3E4"/>
+                        <outlet property="focusModeControl" destination="dtX-Lp-OXO" id="sAg-4e-srQ"/>
                         <outlet property="imageView" destination="9Ip-Nu-zLD" id="oxf-MG-YDp"/>
                     </connections>
                 </viewController>

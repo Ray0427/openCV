@@ -36,11 +36,20 @@ using namespace cv;
     __weak IBOutlet UISlider *VMaxSlider;
     __weak IBOutlet UILabel *VMaxLabel;
     
+    
+    __weak IBOutlet UISegmentedControl *focusModeControl;
+    
 }
+@property (nonatomic) AVCaptureSession *session;
+@property (nonatomic, getter = isDeviceAuthorized) BOOL deviceAuthorized;
+@property (nonatomic, readonly, getter = isSessionRunningAndDeviceAuthorized) BOOL sessionRunningAndDeviceAuthorized;
+@property (nonatomic, strong) NSArray *focusModes;
+@property (nonatomic) AVCaptureDevice *videoDevice;
 
 @property (nonatomic,retain) CvVideoCamera* videoCamera;
 
 - (IBAction)cameraPositionAction:(id)sender;
+- (IBAction)changeFocusMode:(id)sender;
 
 - (IBAction)actionStart:(id)sender;
 - (IBAction)actionStop:(id)sender;

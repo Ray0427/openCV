@@ -8,9 +8,13 @@
 
 #import "ViewController.h"
 #import <opencv2/opencv.hpp>
+#import <AVFoundation/AVFoundation.h>
+#import <AVFoundation/AVCaptureInput.h>
+#import <AVFoundation/AVFoundation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 #define CIRCLE_COLOR CV_RGB(255,0,0)
 #define CIRCLE_SIZE 1
-
+static void *FocusModeContext = &FocusModeContext;
 using namespace cv;
 @interface ViewController ()
 
@@ -19,11 +23,31 @@ using namespace cv;
 @implementation ViewController
 
 @synthesize videoCamera;
-
-
+- (BOOL)isSessionRunningAndDeviceAuthorized
+{
+    return [[self session] isRunning] && [self isDeviceAuthorized];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    // Create the AVCaptureSession
+    AVCaptureSession *session = [[AVCaptureSession alloc] init];
+    [self setSession:session];
+    // Check for device authorization
+    [self checkDeviceAuthorizationStatus];
+    NSError *error = nil;
+    AVCaptureDevice *videoDevice = [ViewController deviceWithMediaType:AVMediaTypeVideo preferringPosition:AVCaptureDevicePositionBack];    // Do any additional setup after loading the view, typically from a nib.
+    AVCaptureDeviceInput *videoDeviceInput = [AVCaptureDeviceInput deviceInputWithDevice:videoDevice error:&error];
+    [[self session] beginConfiguration];
+    
+    if ([session canAddInput:videoDeviceInput])
+    {
+        [session addInput:videoDeviceInput];
+        
+        [self setVideoDevice:videoDeviceInput.device];
+        
+            }
+
+    self.videoDevice.focusMode = (AVCaptureFocusMode) 1;
     self.videoCamera =[[CvVideoCamera alloc]initWithParentView:imageView];
     self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
     self.videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset640x480;
@@ -117,6 +141,29 @@ using namespace cv;
     [self.videoCamera start];
 }
 
+- (IBAction)changeFocusMode:(id)sender {
+    UISegmentedControl *control = sender;
+    AVCaptureFocusMode mode = (AVCaptureFocusMode)[self.focusModes[control.selectedSegmentIndex] intValue];
+    NSError *error = nil;
+    
+    if ([self.videoDevice lockForConfiguration:&error])
+    {
+        if ([self.videoDevice isFocusModeSupported:mode])
+        {
+            self.videoDevice.focusMode = mode;
+        }
+        else
+        {
+            NSLog(@"Focus mode %@ is not supported. Focus mode is %@.", [self stringFromFocusMode:mode], [self stringFromFocusMode:self.videoDevice.focusMode]);
+            self->focusModeControl.selectedSegmentIndex = [self.focusModes indexOfObject:@(self.videoDevice.focusMode)];
+        }
+        [self.videoDevice unlockForConfiguration];
+    }
+    else
+    {
+        NSLog(@"%@", error);
+    }}
+
 
 - (IBAction)actionStart:(id)sender;
 {
@@ -149,6 +196,65 @@ using namespace cv;
 
 - (IBAction)VMaxAction:(UISlider *)sender {
     VMaxLabel.text=[NSString stringWithFormat:@"V%d",(int)sender.value];
+}
+#pragma mark Utilities
+
++ (AVCaptureDevice *)deviceWithMediaType:(NSString *)mediaType preferringPosition:(AVCaptureDevicePosition)position
+{
+    NSArray *devices = [AVCaptureDevice devicesWithMediaType:mediaType];
+    AVCaptureDevice *captureDevice = [devices firstObject];
+    
+    for (AVCaptureDevice *device in devices)
+    {
+        if ([device position] == position)
+        {
+            captureDevice = device;
+            break;
+        }
+    }
+    
+    return captureDevice;
+}
+- (void)checkDeviceAuthorizationStatus
+{
+    NSString *mediaType = AVMediaTypeVideo;
+    
+    [AVCaptureDevice requestAccessForMediaType:mediaType completionHandler:^(BOOL granted) {
+        if (granted)
+        {
+            [self setDeviceAuthorized:YES];
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[[UIAlertView alloc] initWithTitle:@"AVCamManual"
+                                            message:@"AVCamManual doesn't have permission to use the Camera"
+                                           delegate:self
+                                  cancelButtonTitle:@"OK"
+                                  otherButtonTitles:nil] show];
+                [self setDeviceAuthorized:NO];
+            });
+        }
+    }];
+}
+- (NSString *)stringFromFocusMode:(AVCaptureFocusMode) focusMode
+{
+    NSString *string = @"INVALID FOCUS MODE";
+    
+    if (focusMode == AVCaptureFocusModeLocked)
+    {
+        string = @"Locked";
+    }
+    else if (focusMode == AVCaptureFocusModeAutoFocus)
+    {
+        string = @"Auto";
+    }
+    else if (focusMode == AVCaptureFocusModeContinuousAutoFocus)
+    {
+        string = @"ContinuousAuto";
+    }
+    
+    return string;
 }
 
 @end
