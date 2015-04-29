@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <opencv2/highgui/cap_ios.h>
+
 #import <opencv2/objdetect/objdetect.hpp>
 #import <opencv2/imgproc/imgproc_c.h>
 #import "openCV-Prefix.pch"
@@ -35,10 +36,13 @@ using namespace cv;
     __weak IBOutlet UILabel *VMinLabel;
     __weak IBOutlet UISlider *VMaxSlider;
     __weak IBOutlet UILabel *VMaxLabel;
-    
+    __weak IBOutlet UIImageView *pictureView;
+    AVCaptureDevice *inputDevice;
+    CvPhotoCamera *photoCamera;
 }
-
+@property (nonatomic,retain) CvPhotoCamera *photoCamera;
 @property (nonatomic,retain) CvVideoCamera* videoCamera;
+- (IBAction)lock:(id)sender;
 
 - (IBAction)cameraPositionAction:(id)sender;
 
@@ -50,6 +54,7 @@ using namespace cv;
 - (IBAction)SMaxAction:(UISlider *)sender;
 - (IBAction)VMinAction:(UISlider *)sender;
 - (IBAction)VMaxAction:(UISlider *)sender;
+- (IBAction)takePicture:(id)sender;
 
 
 @end

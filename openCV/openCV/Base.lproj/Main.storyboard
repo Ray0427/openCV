@@ -139,6 +139,30 @@
                                     <segment title="HSV"/>
                                 </segments>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bzX-rh-Bam">
+                                <rect key="frame" x="88" y="271" width="581" height="724"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="takePicture:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="nLi-Dc-9fe"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="Ks3-bp-kOb">
+                                <rect key="frame" x="329" y="168" width="99" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MYk-gx-8gJ">
+                                <rect key="frame" x="90" y="191" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Lock">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="lock:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="hvi-Qt-VDD"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -160,11 +184,12 @@
                         <outlet property="button" destination="8Jl-p1-T0v" id="WvA-AX-oF5"/>
                         <outlet property="cameraPosition" destination="p9r-vp-2Pa" id="MsN-lm-3E4"/>
                         <outlet property="imageView" destination="9Ip-Nu-zLD" id="oxf-MG-YDp"/>
+                        <outlet property="pictureView" destination="Ks3-bp-kOb" id="baT-mM-ZQL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="74.239999999999995" y="-90.453333333333333"/>
+            <point key="canvasLocation" x="74" y="-91"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

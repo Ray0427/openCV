@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import <opencv2/opencv.hpp>
+#import <opencv2/highgui/ios.h>
 #define CIRCLE_COLOR CV_RGB(255,0,0)
 #define CIRCLE_SIZE 1
 
@@ -17,20 +18,24 @@ using namespace cv;
 @end
 
 @implementation ViewController
-
+//AVCaptureSession *session;
+//AVCaptureStillImageOutput *stillImageOutput;
 @synthesize videoCamera;
-
+@synthesize photoCamera;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     // Do any additional setup after loading the view, typically from a nib.
     self.videoCamera =[[CvVideoCamera alloc]initWithParentView:imageView];
     self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
-    self.videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPreset640x480;
-    self.videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
+    self.videoCamera.defaultAVCaptureSessionPreset = AVCaptureSessionPresetMedium;
+//    self.videoCamera.defaultAVCaptureVideoOrientation = AVCaptureVideoOrientationPortrait;
     self.videoCamera.defaultFPS = 30;
     self.videoCamera.grayscaleMode = NO;
     self.videoCamera.delegate = self;
+    
+    
     
     self->HMinSlider.minimumValue = 0;
     self->HMinSlider.maximumValue = 180;
@@ -46,10 +51,35 @@ using namespace cv;
     SMaxSlider.value = 255;
     self->VMinSlider.minimumValue = 0;
     self->VMinSlider.maximumValue = 255;
-    VMinSlider.value = 190;
+    VMinSlider.value = 180;//190
     self->VMaxSlider.minimumValue = 0;
     self->VMaxSlider.maximumValue = 255;
     VMaxSlider.value = 255;
+}
+-(void)viewWillAppear:(BOOL)animated{
+    inputDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+    NSError *error;
+    AVCaptureDeviceInput *deviceInput = [AVCaptureDeviceInput deviceInputWithDevice:inputDevice error:&error];
+    if ([videoCamera.captureSession canAddInput:deviceInput]){
+        [videoCamera.captureSession addInput:deviceInput];
+    }
+    //    if ([inputDevice lockForConfiguration:&error])
+    //    {
+    //        //        if ([inputDevice isFocusModeSupported:AVCaptureFocusModeAutoFocus])
+    //        //        {
+    //        printf("%f\n",inputDevice.lensPosition);
+    //        [inputDevice setFocusModeLockedWithLensPosition:1.0 completionHandler:nil];
+    //        [inputDevice setFocusMode:AVCaptureFocusModeLocked];
+    //        //        }
+    //        [inputDevice unlockForConfiguration];
+    //    }
+    //    else{
+    //        NSLog(@"%@",error);
+    //    }
+    //    photoCamera->stillImageOutput = [[AVCaptureStillImageOutput alloc]init];
+    //    NSDictionary *outputSetting = [[NSDictionary alloc]initWithObjectsAndKeys:AVVideoCodecJPEG,AVVideoCodecKey, nil];
+    //    [stillImageOutput setOutputSettings:outputSetting];
+    //    [session addOutput:stillImageOutput];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -71,56 +101,78 @@ using namespace cv;
     IplImage*  thresholded   = cvCreateImage(size, IPL_DEPTH_8U, 1); //create image storage to thresholded image
     CvMemStorage* storage=cvCreateMemStorage(0); //circle storage
     
-
+    
     cvCvtColor(&cvimage, hsv_frame, CV_BGR2HSV); //convert frame to HSV
     cvInRangeS(hsv_frame, hsv_min, hsv_max, thresholded); //thresholding HSV image in range hsv_min and hsv_max
-    cvSmooth(thresholded, thresholded,CV_GAUSSIAN,9,9); //using Gaussian smooth
-    CvSeq* circles= cvHoughCircles(thresholded, storage, CV_HOUGH_GRADIENT, 2, (thresholded->height)/4,100,40,8,120); //find circle
-    
-    float maxRadius=0;
-    //find largest circle
-    for (int i=0; i<circles->total; i++) {
-        float* p = (float*)cvGetSeqElem(circles, i);
-        printf("w=%d h=%d x=%f y=%f r=%f\n",size.width,size.height,p[0],p[1],p[2]);
-        if (p[2]>maxRadius) {
-            maxRadius=p[2];
-            center.x=p[0];
-            center.y=p[1];
-        }
-    }
-    cvCircle(&cvimage, center, 3, CIRCLE_COLOR); //draw circle point
-    cvCircle(&cvimage, center, maxRadius, CIRCLE_COLOR, CIRCLE_SIZE); //draw circle
-    
+    cvSmooth(thresholded, thresholded,CV_GAUSSIAN,15,15); //using Gaussian smooth
     if (RGBorHSV.selectedSegmentIndex==1) {
-        image = Mat(thresholded); //show HSV frame
+        cvCvtColor(thresholded, &cvimage, CV_GRAY2BGR);
     }
     else {
-        image = Mat(&cvimage); //shoe final frame
-        cvReleaseImage(&thresholded);
+        CvSeq* circles= cvHoughCircles(thresholded, storage, CV_HOUGH_GRADIENT, 1.6, (thresholded->height)/4,100,40,8,120); //find circle
+        
+        float maxRadius=0;
+        center.x=0;
+        center.y=0;
+        //find largest circle
+        for (int i=0; i<circles->total; i++) {
+            float* p = (float*)cvGetSeqElem(circles, i);
+            //        printf("w=%d h=%d x=%f y=%f r=%f\n",size.width,size.height,p[0],p[1],p[2]);
+            if (p[2]>maxRadius) {
+                maxRadius=p[2];
+                center.x=p[0];
+                center.y=p[1];
+            }
+        }
+        printf("w=%d h=%d x=%d y=%d r=%f t=%d\n",size.width,size.height,center.x,center.y,maxRadius,circles->total);
+        cvCircle(&cvimage, center, 3, CIRCLE_COLOR); //draw circle point
+        cvCircle(&cvimage, center, maxRadius, CIRCLE_COLOR, CIRCLE_SIZE); //draw circle
     }
+    image = Mat(&cvimage); //shoe final frame
+    
     // release memory space
+    cvReleaseImage(&thresholded);
     cvReleaseImage(&hsv_frame);
     cvReleaseMemStorage(&storage);
+    
+    printf("%f %f\n",inputDevice.lensPosition,inputDevice.exposureTargetOffset);
 }
 #endif
+- (void)dealloc
+{
+    videoCamera.delegate = nil;
+}
 
-
+- (IBAction)lock:(id)sender {
+    [videoCamera lockBalance];
+    [videoCamera lockExposure];
+    
+}
 
 - (IBAction)cameraPositionAction:(id)sender {
-    if (cameraPosition.selectedSegmentIndex == 0) {
-        self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
-    }
-    else {
-        self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
-    }
-    [self.videoCamera stop];
-    [self.videoCamera start];
+    [self.videoCamera switchCameras];
+    //    if (cameraPosition.selectedSegmentIndex == 0) {
+    //
+    //        self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionFront;
+    //    }
+    //    else {
+    //        self.videoCamera.defaultAVCaptureDevicePosition = AVCaptureDevicePositionBack;
+    //    }
+    //    [self.videoCamera stop];
+    //    [self.videoCamera start];
 }
 
 
 - (IBAction)actionStart:(id)sender;
 {
+    NSError *error;
     [self.videoCamera start];
+    if ([inputDevice lockForConfiguration:&error])
+    {
+        [inputDevice setFocusModeLockedWithLensPosition:1.0 completionHandler:nil];
+    }
+    [videoCamera lockFocus];
+    
 }
 
 - (IBAction)actionStop:(id)sender {
@@ -149,6 +201,30 @@ using namespace cv;
 
 - (IBAction)VMaxAction:(UISlider *)sender {
     VMaxLabel.text=[NSString stringWithFormat:@"V%d",(int)sender.value];
+}
+
+- (IBAction)takePicture:(id)sender {
+    [photoCamera takePicture];
+    //    AVCaptureConnection *videoConnect = nil;
+    //    for (AVCaptureConnection *connection in stillImageOutput.connections){
+    //        for(AVCaptureInputPort *port in [connection inputPorts]){
+    //            if([[port mediaType] isEqual:AVMediaTypeVideo]){
+    //                videoConnect = connection;
+    //                break;
+    //            }
+    //        }
+    //        if(videoConnect){
+    //            break;
+    //        }
+    //    }
+    //    [photoCamera->stillImageOutput captureStillImageAsynchronouslyFromConnection:videoConnect completionHandler:^(CMSampleBufferRef imageDataSampleBuffer, NSError *error) {
+    //        if (imageDataSampleBuffer != NULL) {
+    //            NSData *imageData = [AVCaptureStillImageOutput jpegStillImageNSDataRepresentation:imageDataSampleBuffer];
+    //            UIImage *image = [UIImage imageWithData:imageData];
+    //            pictureView.image = image;
+    //        }
+    //    }];
+    
 }
 
 @end
