@@ -55,7 +55,6 @@ using namespace cv;
 - (IBAction)VMinAction:(UISlider *)sender;
 - (IBAction)VMaxAction:(UISlider *)sender;
 - (IBAction)takePicture:(id)sender;
-
-
+//- (Point2f)computeIntersect:(cv::Vec4i) a withParam:(cv::Vec4i) b;
 @end
 
